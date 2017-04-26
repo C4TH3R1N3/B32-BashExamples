@@ -6,4 +6,13 @@
 
 read -p "Écrivez un mot :" mot
 echo $mot
- 
+
+resultat=`wget -qO - http://dictionary.objectif8.com/exists.php?word=$mot`
+
+if test $resultat -eq 1
+then
+	echo "Le mot existe !"
+elif test $resultat -eq 0
+then
+	echo "Le mot n'existe pas !"
+fi 
